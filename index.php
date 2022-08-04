@@ -1,3 +1,6 @@
 <?php
-    echo "A";
+
+header('Location: telas/listagemProdutos.php');
+exit;
+
 ?>
