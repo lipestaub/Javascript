@@ -18,7 +18,7 @@
                 <li><a href="telas/autoCadastroCliente.php">Cadastre-se</a></li>
                 <li><a href="telas/carrinho.php">Meu Carrinho</a></li>
                 <li><a href="telas/buscaProdutos.php">Buscar Produtos</a></li>
-                <li><a href="telas/logout.php">Sair</a></li>         
+                <li><a href="../controle/controleLogout.php">Sair</a></li>         
         <?php
             }
             elseif ($_SESSION['perfil'] == 1) {
@@ -30,7 +30,7 @@
                 <li><a href="telas/cadastroProdutos.php">Cadastrar Produtos</a></li>
                 <li><a href="telas/cadastroClientes.php">Cadastrar Clientes</a></li>
                 <li><a href="telas/cadastroFuncionarios.php">Cadastrar Funcionarios</a></li>
-                <li><a href="telas/logout.php">Sair</a></li>
+                <li><a href="../controle/controleLogout.php">Sair</a></li>
         <?php
             }
         ?>
