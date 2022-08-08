@@ -22,6 +22,6 @@ if (mysqli_num_rows($resposta) > 0) {
     exit;
 }
 else {
-    header("Location: ../telas/login.php");
+    header("Location: ../login.php");
     exit;
 }
