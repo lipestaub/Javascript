@@ -39,6 +39,34 @@
 </menu>
 
 <body>
-    
+    <form action="../controle/controleCRUD.php" method="post">
+        Nome:
+        <br>
+        <input type="test" name="nome" id="nome">
+        <br>
+        <br>
+        CPF:
+        <br>
+        <input type="number" name="documento" id="documento">
+        <br>
+        <br>
+        Telefone:
+        <br>
+        <input type="text" name="telefone" id="telefone" data-role="input, input-mask" data-mask="+380 (__) ___-____">
+        <br>
+        <br>
+        E-mail:
+        <br>
+        <input type="email" name="email" id="email">
+        <br>
+        <br>
+        Senha:
+        <br>
+        <input type="password" name="senha" id="senha">
+        <br>
+        <br>
+        <input type="hidden" name="operacao" id="operacao" value="cadastroCliente">
+        <input class="button" type="submit" value="Cadastrar">
+    </form>
 </body>
 </html>
