@@ -19,7 +19,8 @@ if ($operacao == "cadastroCliente") {
 
 /*    foreach ($_POST as $value) {
         if ()
-    }*/
+    }
+*/
 
     //$sql = "INSERT INTO pessoa (nome, documento, telefone, email, senha, perfil) VALUES ($nome, $dpcumento, $telefone, $email, $senha, $perfil)";
 }
