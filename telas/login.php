@@ -26,12 +26,10 @@
     elseif ($_SESSION['perfil'] == 1) {
     ?>
         <a href="../index.php">Home</a>
-        <a href="login.php">Entrar/Cadastrar-se</a>
         <a href="carrinho.php">Meu Carrinho</a>
         <a href="buscaProdutos.php">Buscar Produtos</a>
         <a href="cadastroProdutos.php">Cadastrar Produtos</a>
-        <a href="cadastroClientes.php">Cadastrar Clientes</a>
-        <a href="cadastroFuncionarios.php">Cadastrar Funcionarios</a>
+        <a href="cadastroPessoas.php">Cadastrar Pessoas</a>
         <a href="../controle/controleLogout.php">Sair</a>
     <?php
     }
