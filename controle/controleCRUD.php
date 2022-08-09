@@ -2,7 +2,9 @@
 
 include "../conexao/conectar.php";
 
-$operacao = trim($_POST['operacao']);
+if (isset($_POST['operacao'])) {
+    $operacao = trim($_POST['operacao']);
+}
 
 if (empty($operacao)) {
     header("Location: ../telas/erro.php");
@@ -21,16 +23,14 @@ if ($operacao == "cadastroCliente") {
     $camposVazios = substr($camposVazios, 0, -2);
 
     if (isset($camposVazios) && ($camposVazios != null && !empty($camposVazios))) {
-        echo "<script>alert('Preencha os campos $camposVazios!'); window.location.href = '../telas/autoCadastroCliente.php'</script>";
+        
     }
-    else {
-        $nome = $_POST['nome'];
-        $documento = $_POST['documento'];
-        $telefone = $_POST['telefone'];
-        $email = $_POST['email'];
-        $senha = $_POST['senha'];
-    }
-
+    
+    $nome = trim($_POST['nome']);
+    $documento = trim($_POST['documento']);
+    $telefone = trim($_POST['telefone']);
+    $email = trim($_POST['email']);
+    $senha = trim($_POST['senha']);
 
     //$sql = "INSERT INTO pessoa (nome, documento, telefone, email, senha, perfil) VALUES ($nome, $dpcumento, $telefone, $email, $senha, $perfil)";
 }
