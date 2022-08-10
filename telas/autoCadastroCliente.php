@@ -40,17 +40,17 @@
     <form action="../controle/controleCRUD.php" method="post">
         Nome:
         <br>
-        <input type="test" name="nome" id="nome">
+        <input type="text" name="nome" id="nome">
         <br>
         <br>
         CPF:
         <br>
-        <input type="number" name="documento" id="documento">
+        <input type="text" name="documento" id="documento">
         <br>
         <br>
         Telefone:
         <br>
-        <input type="text" name="telefone" id="telefone" data-role="input, input-mask" data-mask="+380 (__) ___-____">
+        <input type="text" name="telefone" id="telefone">
         <br>
         <br>
         E-mail:
