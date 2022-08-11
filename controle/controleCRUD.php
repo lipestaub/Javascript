@@ -24,35 +24,46 @@ if ($operacao == "cadastroCliente") {
 
     $camposVazios = substr($camposVazios, 0, -2);
 
-    if (isset($camposVazios) && ($camposVazios != null && !empty($camposVazios))) {
-        echo "<script>alert('Preencha corretamente os campos ' . $camposVazios . '!'); window.location.href = '../telas/autoCadastroCliente.php';</script>";
+    if ($camposVazios != null && !empty($camposVazios)) {
+        echo "<script>alert('Preencha corretamente os campos " . $camposVazios . "!'); window.location.href = '../telas/autoCadastroCliente.php';</script>";
     }
     else {
         $camposInvalidos = "";
         $numeroErros = 0;
 
+
+        foreach ($_POST as $key => $value) {
+            if (strlen(trim($value))) {
+                $value = strlen(trim($_POST[$key]));
+                echo "\n[$key] == $value";
+            }
+        }
+
+
         if (strlen(trim($_POST['nome'])) < 3) {
-            $camposInvalidos .= "O nome deve ter no mínimo 3 caracteres!\n";
+            $camposInvalidos .= "\\nO nome deve ter no mínimo 3 caracteres!";
             $numeroErros += 1;
         }
 
         if (strlen(trim($_POST['documento'])) != 11) {
-            $camposInvalidos .= "O CPF deve ter 11 dígitos!\n";
+            $camposInvalidos .= "\\nO CPF deve ter 11 dígitos!";
             $numeroErros += 1;
         }
 
         if (strlen(trim($_POST['telefone'])) < 9) {
-            $camposInvalidos .= "O telefone deve ter no mínimo 9 dígitos!\n";
+            $camposInvalidos .= "\\nO telefone deve ter no mínimo 9 dígitos!";
             $numeroErros += 1;
         }
 
         if (strlen(trim($_POST['senha'])) < 6) {
-            $camposInvalidos .= "A senha deve ter no mínimo 6 caracteres!\n";
+            $camposInvalidos .= "\\nA senha deve ter no mínimo 6 caracteres!";
             $numeroErros += 1;
         }
 
+        echo "\nErros = $camposInvalidos";
+
         if ($numeroErros > 0) {
-            echo "<script>alert('Foram identificados ' . $numeroErros . ' erros:\n' . $camposInvalidos . '); window.location.href = '../telas/autoCadastroCliente.php';</script>";
+            echo "<script>alert('Foram identificados " . $numeroErros . " erro(s):\\n" . $camposInvalidos . "'); window.location.href = '../telas/autoCadastroCliente.php';</script>";
         }
         else {
             $perfil = 0;
@@ -68,7 +79,7 @@ if ($operacao == "cadastroCliente") {
             $insert = mysqli_query($conexao, $query);
             
             if ($insert) {
-                echo "<script>alert(' . $nome . ', seu cadastro foi efetuado com sucesso!'); window.location.href = '../index.php';</script>";
+                echo "<script>alert('" . $nome . ", seu cadastro foi efetuado com sucesso!'); window.location.href = '../index.php';</script>";
             }
             else {
                 echo "<script>alert('Algo deu errado!'); window.location.href = '../telas/autoCadastroCliente.php';</script>";
