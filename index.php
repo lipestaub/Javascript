@@ -13,24 +13,32 @@
     <?php
     session_start();
 
-    if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] == 0) {
+    if (!isset($_SESSION['perfil'])) {
     ?>
-        <a href="../index.php">Home</a>
+        <a href="index.php">Home</a>
         <a href="telas/login.php">Entrar</a>
         <a href="telas/autoCadastroCliente.php">Cadastre-se</a>
         <a href="telas/carrinho.php">Meu Carrinho</a>
         <a href="telas/buscaProdutos.php">Buscar Produtos</a>
-        <a href="../controle/controleLogout.php">Sair</a>         
+        <a href="controle/controleLogout.php">Sair</a>
+    <?php
+    }
+    elseif ($_SESSION['perfil'] == 0) {
+    ?>
+        <a href="index.php">Home</a>
+        <a href="telas/carrinho.php">Meu Carrinho</a>
+        <a href="telas/buscaProdutos.php">Buscar Produtos</a>
+        <a href="controle/controleLogout.php">Sair</a>
     <?php
     }
     elseif ($_SESSION['perfil'] == 1) {
     ?>
-        <a href="../index.php">Home</a>
+        <a href="index.php">Home</a>
         <a href="telas/carrinho.php">Meu Carrinho</a>
         <a href="telas/buscaProdutos.php">Buscar Produtos</a>
         <a href="telas/cadastroProdutos.php">Cadastrar Produtos</a>
         <a href="telas/cadastroPessoas.php">Cadastrar Pessoas</a>
-        <a href="../controle/controleLogout.php">Sair</a>
+        <a href="controle/controleLogout.php">Sair</a>
     <?php
     }
     ?>

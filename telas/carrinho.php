@@ -9,18 +9,24 @@
     <title>Azamon</title>
 </head>
 
-<menu>
-    <?php
+<?php
     session_start();
 
-    if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] == 0) {
+    if (!isset($_SESSION['perfil'])) {
+    ?>
+        <script>alert("Você precisa estar logado para acessar esta página!"); window.location.href = 'login.php';</script>
+    <?php
+    }
+?>
+
+<menu>
+<?php
+    if ($_SESSION['perfil'] == 0) {
     ?>
         <a href="../index.php">Home</a>
-        <a href="login.php">Entrar</a>
-        <a href="autoCadastroCliente.php">Cadastre-se</a>
         <a href="carrinho.php">Meu Carrinho</a>
         <a href="buscaProdutos.php">Buscar Produtos</a>
-        <a href="../controle/controleLogout.php">Sair</a>         
+        <a href="../controle/controleLogout.php">Sair</a>
     <?php
     }
     elseif ($_SESSION['perfil'] == 1) {

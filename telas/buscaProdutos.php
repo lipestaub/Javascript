@@ -13,14 +13,21 @@
     <?php
     session_start();
 
-    if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] == 0) {
+    if (!isset($_SESSION['perfil'])) {
     ?>
         <a href="../index.php">Home</a>
         <a href="login.php">Entrar</a>
-        <a href="autoCadastroCliente.php">Cadastre-se</a>
         <a href="carrinho.php">Meu Carrinho</a>
         <a href="buscaProdutos.php">Buscar Produtos</a>
-        <a href="../controle/controleLogout.php">Sair</a>         
+        <a href="../controle/controleLogout.php">Sair</a>
+    <?php
+    }
+    elseif ($_SESSION['perfil'] == 0) {
+    ?>
+        <a href="../index.php">Home</a>
+        <a href="carrinho.php">Meu Carrinho</a>
+        <a href="buscaProdutos.php">Buscar Produtos</a>
+        <a href="../controle/controleLogout.php">Sair</a>
     <?php
     }
     elseif ($_SESSION['perfil'] == 1) {

@@ -9,31 +9,21 @@
     <title>Azamon</title>
 </head>
 
-<menu>
-    <?php
+<?php
     session_start();
 
     if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] == 0) {
-    ?>
-        <a href="../index.php">Home</a>
-        <a href="login.php">Entrar</a>
-        <a href="autoCadastroCliente.php">Cadastre-se</a>
-        <a href="carrinho.php">Meu Carrinho</a>
-        <a href="buscaProdutos.php">Buscar Produtos</a>
-        <a href="../controle/controleLogout.php">Sair</a>         
-    <?php
+        exit(0);
     }
-    elseif ($_SESSION['perfil'] == 1) {
-    ?>
+?>
+
+<menu>
         <a href="../index.php">Home</a>
         <a href="carrinho.php">Meu Carrinho</a>
         <a href="buscaProdutos.php">Buscar Produtos</a>
         <a href="cadastroProdutos.php">Cadastrar Produtos</a>
         <a href="cadastroPessoas.php">Cadastrar Pessoas</a>
         <a href="../controle/controleLogout.php">Sair</a>
-    <?php
-    }
-    ?>
 </menu>
 
 <body>

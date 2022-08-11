@@ -9,6 +9,16 @@
     <title>Azamon</title>
 </head>
 
+<?php
+    session_start();
+
+    if (isset($_SESSION['perfil'])) {
+    ?>
+        <script>alert("Você já está logado!"); window.location.href = '../index.php';</script>
+    <?php
+    }
+?>
+
 <menu>
     <?php
     session_start();
