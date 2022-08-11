@@ -37,6 +37,17 @@
 </menu>
 
 <body>
-    
+    <?php
+
+    include "conexao/conectar.php";
+
+    $query = "SELECT * FROM produto";
+    $select = mysqli_query($conexao, $query);
+
+    if (mysqli_num_rows($select) > 0) {
+
+    }
+
+    ?>
 </body>
 </html>
