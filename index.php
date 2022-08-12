@@ -43,6 +43,49 @@
 </menu>
 
 <body>
-    
+    <?php
+
+    include "conexao/conectar.php";
+
+    $query = "SELECT * FROM produto";
+    $select = mysqli_query($conexao, $query);
+
+    while ($dados = mysqli_fetch_assoc($select)) {
+        $i += 1;
+
+        $arrayProdutos[$i]['id'] = $dados['id'];
+        $arrayProdutos[$i]['descricao'] = $dados['descricao'];
+        $arrayProdutos[$i]['preco'] = $dados['preco'];
+        $arrayProdutos[$i]['estoque'] = $dados['estoque'];
+    }
+    ?>
+
+    <table>
+    <tr>
+        <th>Descri&ccedil;&atilde;o</th>
+        <th>Pre&ccedil;o</th>
+        <th></th>
+    </tr>
+
+    <?php
+    foreach ($arrayProdutos as $produto) {
+    ?>
+        <tr>
+            <td> <?php echo $produto['descricao']; ?> </td>
+            <td> <?php echo 'R$ ' . number_format($produto['preco'], 2, ',', ''); ?> </td>
+            <td>
+            <?php
+                $id = $produto['id'];
+
+                echo "<a href='http://localhost/controle/controleCompra.php?p=$id'>";
+                    echo "<input type='button' value='Comprar'/>";
+                echo "</a>";
+            ?>
+            </td>
+        </tr>
+    <?php
+    }
+    ?>
+    </table>
 </body>
 </html>
