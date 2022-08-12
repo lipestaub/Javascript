@@ -14,7 +14,7 @@
 
     if (isset($_SESSION['perfil'])) {
     ?>
-        <script>alert("Você já está cadastrado!"); window.location.href = '../index.php';</script>
+        <script>window.location.href = '../index.php';</script>
     <?php
     }
 ?>

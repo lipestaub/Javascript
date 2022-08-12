@@ -14,7 +14,7 @@
 
     if (isset($_SESSION['perfil'])) {
     ?>
-        <script>alert("Você já está logado!"); window.location.href = '../index.php';</script>
+        <script>window.location.href = '../index.php';</script>
     <?php
     }
 ?>
@@ -59,6 +59,10 @@
         <br>
         <br>
         <input class="button" type="submit" value="Entrar">
+
+        <a href="http://localhost/telas/autoCadastroCliente.php">
+            <input type="button" value="Cadastre-se"/>
+        </a>
     </form>
 </body>
 </html>
