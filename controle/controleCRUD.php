@@ -4,17 +4,6 @@ include "../conexao/conectar.php";
 
 $operacao = trim($_POST['operacao']);
 
-/*
-if (isset($_POST['operacao'])) {
-    $operacao = trim($_POST['operacao']);
-}
-
-if (empty($operacao)) {
-    header("Location: ../telas/erro.php");
-    exit;
-}
-*/
-
 if ($operacao == "cadastroCliente") {    
     foreach ($_POST as $key=>$value) {
         if (empty(trim($value))) {

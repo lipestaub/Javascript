@@ -6,5 +6,4 @@ if (isset($_SESSION['perfil']) && isset($_SESSION['id'])) {
     session_destroy();
 }
 
-header('Location: ../telas/logout.php');
-exit;
+echo "<script>window.location.href = '../index.php';</script>";

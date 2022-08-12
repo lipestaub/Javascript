@@ -18,10 +18,8 @@ if (mysqli_num_rows($resposta) > 0) {
     $_SESSION['id'] = $idPessoa;
     $_SESSION['perfil'] = $perfilPessoa;
 
-    header("Location: ../index.php");
-    exit;
+    echo "<script>window.location.href = '../index.php';</script>";
 }
 else {
-    header("Location: ../login.php");
-    exit;
+    echo "<script>window.location.href = '../telas/login.php';</script>";
 }
