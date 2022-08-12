@@ -10,11 +10,11 @@
 </head>
 
 <?php
-    session_start();
+session_start();
 
-    if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] == 0) {
-        exit(0);
-    }
+if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] == 0) {
+    exit(0);
+}
 ?>
 
 <menu>

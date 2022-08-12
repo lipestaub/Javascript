@@ -10,13 +10,11 @@
 </head>
 
 <?php
-    session_start();
+session_start();
 
-    if (isset($_SESSION['perfil'])) {
-    ?>
-        <script>window.location.href = '../index.php';</script>
-    <?php
-    }
+if (isset($_SESSION['perfil'])) {
+    exit(0);
+}
 ?>
 
 <menu>
@@ -24,7 +22,6 @@
     <a href="login.php">Entrar</a>
     <a href="carrinho.php">Meu Carrinho</a>
     <a href="buscaProdutos.php">Buscar Produtos</a>
-    <a href="../controle/controleLogout.php">Sair</a>
 </menu>
 
 <body>

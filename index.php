@@ -20,7 +20,6 @@
         <a href="telas/autoCadastroCliente.php">Cadastre-se</a>
         <a href="telas/carrinho.php">Meu Carrinho</a>
         <a href="telas/buscaProdutos.php">Buscar Produtos</a>
-        <a href="controle/controleLogout.php">Sair</a>
     <?php
     }
     elseif ($_SESSION['perfil'] == 0) {

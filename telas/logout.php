@@ -9,6 +9,14 @@
     <title>Azamon</title>
 </head>
 
+<?php
+session_start();
+
+if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] == 0) {
+    exit(0);
+}
+?>
+
 <menu>
         <a href="../index.php">Home</a>
         <a href="login.php">Entrar</a>

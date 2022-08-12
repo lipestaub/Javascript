@@ -10,17 +10,17 @@
 </head>
 
 <?php
-    session_start();
+session_start();
 
-    if (!isset($_SESSION['perfil'])) {
-    ?>
-        <script>alert("Você precisa estar logado para acessar esta página!"); window.location.href = 'login.php';</script>
-    <?php
-    }
+if (!isset($_SESSION['perfil'])) {
+?>
+    <script>alert("Você precisa estar logado para acessar esta página!"); window.location.href = 'login.php';</script>
+<?php
+}
 ?>
 
 <menu>
-<?php
+    <?php
     if ($_SESSION['perfil'] == 0) {
     ?>
         <a href="../index.php">Home</a>

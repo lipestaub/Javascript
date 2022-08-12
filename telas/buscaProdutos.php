@@ -19,7 +19,6 @@
         <a href="login.php">Entrar</a>
         <a href="carrinho.php">Meu Carrinho</a>
         <a href="buscaProdutos.php">Buscar Produtos</a>
-        <a href="../controle/controleLogout.php">Sair</a>
     <?php
     }
     elseif ($_SESSION['perfil'] == 0) {

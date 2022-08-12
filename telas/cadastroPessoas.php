@@ -10,20 +10,20 @@
 </head>
 
 <?php
-    session_start();
+session_start();
 
-    if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] == 0) {
-        exit(0);
-    }
+if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] == 0) {
+    exit(0);
+}
 ?>
 
 <menu>
-        <a href="../index.php">Home</a>
-        <a href="carrinho.php">Meu Carrinho</a>
-        <a href="buscaProdutos.php">Buscar Produtos</a>
-        <a href="cadastroProdutos.php">Cadastrar Produtos</a>
-        <a href="cadastroPessoas.php">Cadastrar Pessoas</a>
-        <a href="../controle/controleLogout.php">Sair</a>
+    <a href="../index.php">Home</a>
+    <a href="carrinho.php">Meu Carrinho</a>
+    <a href="buscaProdutos.php">Buscar Produtos</a>
+    <a href="cadastroProdutos.php">Cadastrar Produtos</a>
+    <a href="cadastroPessoas.php">Cadastrar Pessoas</a>
+    <a href="../controle/controleLogout.php">Sair</a>
 </menu>
 
 <body>

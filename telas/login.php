@@ -10,13 +10,13 @@
 </head>
 
 <?php
-    session_start();
+session_start();
 
-    if (isset($_SESSION['perfil'])) {
-    ?>
-        <script>window.location.href = '../index.php';</script>
-    <?php
-    }
+if (isset($_SESSION['perfil'])) {
+?>
+    <script>window.location.href = '../index.php';</script>
+<?php
+}
 ?>
 
 <menu>
@@ -59,7 +59,6 @@
         <br>
         <br>
         <input class="button" type="submit" value="Entrar">
-
         <a href="http://localhost/telas/autoCadastroCliente.php">
             <input type="button" value="Cadastre-se"/>
         </a>
