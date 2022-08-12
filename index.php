@@ -17,7 +17,6 @@
     ?>
         <a href="index.php">Home</a>
         <a href="telas/login.php">Entrar</a>
-        <a href="telas/autoCadastroCliente.php">Cadastre-se</a>
         <a href="telas/carrinho.php">Meu Carrinho</a>
         <a href="telas/buscaProdutos.php">Buscar Produtos</a>
     <?php
@@ -44,17 +43,6 @@
 </menu>
 
 <body>
-    <?php
-
-    include "conexao/conectar.php";
-
-    $query = "SELECT * FROM produto";
-    $select = mysqli_query($conexao, $query);
-
-    if (mysqli_num_rows($select) > 0) {
-
-    }
-
-    ?>
+    
 </body>
 </html>

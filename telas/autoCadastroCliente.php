@@ -13,7 +13,9 @@
 session_start();
 
 if (isset($_SESSION['perfil'])) {
-    exit(0);
+?>
+    <script>window.location.href = '../index.php';</script>
+<?php
 }
 ?>
 
