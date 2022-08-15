@@ -42,6 +42,14 @@
     ?>
 </menu>
 
+<?php
+if (isset($_SESSION['nome'])) {
+?>
+    <div class="boasVindas"> Bem-vindo, <?php echo $_SESSION['nome'] ?> </div>
+<?php
+}
+?>
+
 <body>
     <?php
 

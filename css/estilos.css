@@ -1,7 +1,28 @@
 menu {
     text-align: center;
+    padding: 0;
+    margin: 0;
 }
 
 a {
     text-decoration: none;
+    padding: 8px;
+}
+
+table {
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+th, tr {
+    text-align: left;
+    padding-bottom: 10px;
+    padding-right: 35px;
+}
+
+.boasVindas {
+    text-align: right;
+    font-size: 14px;
+    padding: 8px;
 }

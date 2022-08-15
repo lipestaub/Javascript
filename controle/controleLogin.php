@@ -5,7 +5,7 @@ include "../conexao/conectar.php";
 $email = $_POST['email'];
 $senha = $_POST['senha'];
 
-$resposta = mysqli_query($conexao, "SELECT id, perfil FROM pessoa WHERE email='$email' AND senha='$senha'");
+$resposta = mysqli_query($conexao, "SELECT id, nome, perfil FROM pessoa WHERE email='$email' AND senha='$senha'");
 
 if (mysqli_num_rows($resposta) > 0) {
     session_start();
@@ -13,9 +13,11 @@ if (mysqli_num_rows($resposta) > 0) {
     $arrayResposta = mysqli_fetch_row($resposta);
 
     $idPessoa = (int) $arrayResposta[0];
-    $perfilPessoa = (int) $arrayResposta[1];   
+    $nomePesssoa = $arrayResposta[1];
+    $perfilPessoa = (int) $arrayResposta[2];   
 
     $_SESSION['id'] = $idPessoa;
+    $_SESSION['nome'] = $nomePesssoa;
     $_SESSION['perfil'] = $perfilPessoa;
 
     echo "<script>window.location.href = '../index.php';</script>";
