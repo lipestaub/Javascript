@@ -25,12 +25,22 @@ if (!isset($_SESSION['idPedido'])) {
         $idPedido++;
     }
 
-    echo $idPedido;
     $idPessoa = $_SESSION['id'];
     $data = time();
 
     mysqli_query($conexao, "INSERT INTO pedido (idPedido, idPessoa, data, status) VALUES ($idPedido, $idPessoa, $data, 0)");
 
+    $_SESSION['idPedido'] = $idPedido;
+}
+else {
+    $idPedido = $_SESSION['idPedido'];
 }
 
-// echo "<script>window.location.href = '../index.php';</script>";
+if (mysqli_num_rows(mysqli_query($conexao, "SELECT id FROM itemPedido WHERE idPedido = $idPedido AND idProduto = $idProduto")) <= 0) {
+    mysqli_query($conexao, "INSERT INTO itemPedido (idPedido, idProduto, quantidade) VALUES ($idPedido, $idProduto, 1)");
+}
+else {
+    mysqli_query($conexao, "UPDATE itemPedido SET quantidade = quantidade + 1 WHERE idPedido = $idPedido AND idProduto = $idProduto");
+}
+
+echo "<script>window.location.href = '../index.php';</script>";
