@@ -27,7 +27,7 @@ if (isset($_SESSION['perfil'])) {
 </menu>
 
 <body>
-    <form action="../controle/controleCRUD.php" method="post">
+    <form action="../controle/controleCadastro.php" method="post">
         Nome:
         <br>
         <input type="text" name="nome" id="nome">
