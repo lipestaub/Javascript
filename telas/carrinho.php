@@ -43,6 +43,9 @@ if (!isset($_SESSION['perfil'])) {
 </menu>
 
 <body>
+    <br>
+    <h3>Meu carrinho</h3>
+
     <?php
 
     include "../conexao/conectar.php";

@@ -51,6 +51,9 @@ if (isset($_SESSION['nome'])) {
 ?>
 
 <body>
+    <br>
+    <h3>Tela inicial</h3>
+
     <?php
 
     include "conexao/conectar.php";

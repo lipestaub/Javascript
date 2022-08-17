@@ -27,6 +27,8 @@ if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] == 0) {
 </menu>
 
 <body>
+    <br>
+    <h3>Cadastrar pessoas</h3>
     
 </body>
 </html>
