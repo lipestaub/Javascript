@@ -21,7 +21,7 @@ if (isset($_SESSION['perfil'])) {
 
 <menu>
     <a href="../index.php">Home</a>
-    <a href="login.php">Entrar</a>
+    <a href="login.php">Login</a>
     <a href="carrinho.php">Meu Carrinho</a>
     <a href="buscaProdutos.php">Buscar Produtos</a>
 </menu>

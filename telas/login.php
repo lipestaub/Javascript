@@ -21,7 +21,7 @@ if (isset($_SESSION['perfil'])) {
 
 <menu>
     <a href="../index.php">Home</a>
-    <a href="login.php">Entrar</a>
+    <a href="login.php">Login</a>
     <a href="carrinho.php">Meu Carrinho</a>
     <a href="buscaProdutos.php">Buscar Produtos</a>
 </menu>
@@ -38,7 +38,7 @@ if (isset($_SESSION['perfil'])) {
         <input type="password" name="senha" id="senha">
         <br>
         <br>
-        <input class="button" type="submit" value="Entrar">
+        <input class="button" type="submit" value="Login">
         <a href="http://localhost/telas/autoCadastroCliente.php">
             <input type="button" value="Cadastre-se"/>
         </a>

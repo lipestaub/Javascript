@@ -45,17 +45,14 @@ if (!isset($_SESSION['perfil'])) {
 <body>
     <?php
 
-    include "conexao/conectar.php";
+    include "../conexao/conectar.php";
 
-    if (!isset($_SESSION['idPedido'])) { 
-    ?>
-        <span class="mensagem">Nenhum produto encontrado.</span>
-    <?php
-    }
-    else {
+    if (isset($_SESSION['idPedido'])) { 
         $idPedido = $_SESSION['idPedido'];
+        $query = "SELECT PE.id AS idPedido, P.id AS idProduto, P.descricao AS descricao, P.preco AS preco, IP.quantidade AS quantidade, (preco * quantidade) AS valorTotal FROM produto P INNER JOIN itemPedido IP ON P.id = IP.idProduto INNER JOIN pedido PE ON PE.id = IP.idPedido WHERE PE.idPedido = $idPedido";
+        $select = mysqli_query($conexao, $query);
 
-        while ($dados = mysqli_fetch_assoc(mysqli_query($conexao, "SELECT PE.id AS idPedido, P.id AS idProduto, P.descricao AS descricao, P.preco AS preco, IP.quantidade AS quantidade, (preco * quantidade) AS valorTotal FROM produto P INNER JOIN itemPedido IP ON P.id = IP.idProduto INNER JOIN pedido PE ON PE.id = IP.idPedido WHERE PE.idPedido = $idPedido"))) {
+        while ($dados = mysqli_fetch_assoc($select)) {
             $i += 1;
 
             $arrayItensPedido[$i]['idPedido'] = $dados['idPedido'];
@@ -99,6 +96,11 @@ if (!isset($_SESSION['perfil'])) {
         ?>
         </table>
     <?php       
+    }
+    else {
+    ?>
+        <span class="mensagem">Nenhum produto encontrado.</span>
+    <?php
     }
     ?>
 </body>

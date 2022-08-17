@@ -16,7 +16,7 @@
     if (!isset($_SESSION['perfil'])) {
     ?>
         <a href="index.php">Home</a>
-        <a href="telas/login.php">Entrar</a>
+        <a href="telas/login.php">Login</a>
         <a href="telas/carrinho.php">Meu Carrinho</a>
         <a href="telas/buscaProdutos.php">Buscar Produtos</a>
     <?php
