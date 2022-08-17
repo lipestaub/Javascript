@@ -5,8 +5,7 @@ include "../conexao/conectar.php";
 session_start();
 
 if (!isset($_SESSION['perfil'])) {
-    echo "<script>alert('Você precisa estar logado para acessar esta página!'); window.location.href = '../telas/login.php';</script>";
-
+    exit(0);
 }
 
 $idProduto = $_GET['p'];

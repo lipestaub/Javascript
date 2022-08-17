@@ -52,58 +52,64 @@ if (!isset($_SESSION['perfil'])) {
 
     if (isset($_SESSION['idPedido'])) { 
         $idPedido = $_SESSION['idPedido'];
+
         $query = "SELECT PE.id AS idPedido, P.id AS idProduto, P.descricao AS descricao, P.preco AS preco, IP.quantidade AS quantidade, (preco * quantidade) AS valorTotal FROM produto P INNER JOIN itemPedido IP ON P.id = IP.idProduto INNER JOIN pedido PE ON PE.id = IP.idPedido WHERE PE.idPedido = $idPedido";
         $select = mysqli_query($conexao, $query);
 
-        while ($dados = mysqli_fetch_assoc($select)) {
-            $i += 1;
-
-            $arrayItensPedido[$i]['idPedido'] = $dados['idPedido'];
-            $arrayItensPedido[$i]['idProduto'] = $dados['idProduto'];
-            $arrayItensPedido[$i]['descricao'] = $dados['descricao'];
-            $arrayItensPedido[$i]['preco'] = $dados['preco'];
-            $arrayItensPedido[$i]['quantidade'] = $dados['quantidade'];
-            $arrayItensPedido[$i]['valorTotal'] = $dados['valorTotal'];
-        }
+        if (mysqli_num_rows($select) <= 0) {
         ?>
-
-        <table>
-        <tr>
-            <th>Descri&ccedil;&atilde;o</th>
-            <th>Pre&ccedil;o</th>
-            <th>Quantidade</th>
-            <th>Total</th>
-            <th></th>
-        </tr>
-
+            <span class="mensagem">Nenhum produto encontrado.</span>
         <?php
-        foreach ($arrayItensPedido as $item) {
-        ?>
+        }
+        else {
+            while ($dados = mysqli_fetch_assoc($select)) {
+                $i += 1;
+
+                $arrayItensPedido[$i]['idPedido'] = $dados['idPedido'];
+                $arrayItensPedido[$i]['idProduto'] = $dados['idProduto'];
+                $arrayItensPedido[$i]['descricao'] = $dados['descricao'];
+                $arrayItensPedido[$i]['preco'] = $dados['preco'];
+                $arrayItensPedido[$i]['quantidade'] = $dados['quantidade'];
+                $arrayItensPedido[$i]['valorTotal'] = $dados['valorTotal'];
+            }
+            ?>
+
+            <table>
             <tr>
-                <td>  <?php echo $item['descricao'] ?> </td>
-                <td>  <?php echo 'R$ ' . number_format($item['preco'], 2, ',', ''); ?> </td>
-                <td> <?php echo $item['quantidade']; ?> </td>
-                <td> <?php echo 'R$ ' . number_format($item['valorTotal'], 2, ',', ''); ?> </td>
-                <td>
-                <?php
-                    $id = $item['idProduto'];
-
-                    //echo "<a href='http://localhost/controle/controleCompra.php?p=$id'>";
-                        echo "<input type='button' value='Comprar'/>";
-                    //echo "</a>";
-                ?>
-                </td>
+                <th>Descri&ccedil;&atilde;o</th>
+                <th>Pre&ccedil;o</th>
+                <th>Quantidade</th>
+                <th>Total</th>
+                <th></th>
             </tr>
-        <?php
+
+            <?php
+            foreach ($arrayItensPedido as $item) {
+            ?>
+                <tr>
+                    <td>  <?php echo $item['descricao'] ?> </td>
+                    <td>  <?php echo 'R$ ' . number_format($item['preco'], 2, ',', ''); ?> </td>
+                    <td> <?php echo $item['quantidade']; ?> </td>
+                    <td> <?php echo 'R$ ' . number_format($item['valorTotal'], 2, ',', ''); ?> </td>
+                    <td>
+                    <?php
+                        $id = $item['idProduto'];
+
+                        echo "<a href='http://localhost/telas/editarProduto.php?p=$id'>";
+                            echo "<input type='button' value='Editar'/>";
+                        echo "</a>";
+                        echo "<a href='http://localhost/controle/excluirProduto.php?p=$id'>";
+                            echo "<input type='button' value='Excluir'/>";
+                        echo "</a>";
+                    ?>
+                    </td>
+                </tr>
+            <?php
+            }
+            ?>
+            </table>
+        <?php       
         }
-        ?>
-        </table>
-    <?php       
-    }
-    else {
-    ?>
-        <span class="mensagem">Nenhum produto encontrado.</span>
-    <?php
     }
     ?>
 </body>
