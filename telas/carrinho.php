@@ -31,7 +31,7 @@ if (!isset($_SESSION['perfil'])) {
     }
     elseif ($_SESSION['perfil'] == 1) {
     ?>
-        <a href="../index.php">Home</a
+        <a href="../index.php">Home</a>
         <a href="carrinho.php">Meu Carrinho</a>
         <a href="buscaProdutos.php">Buscar Produtos</a>
         <a href="cadastroProdutos.php">Cadastrar Produtos</a>
@@ -92,8 +92,8 @@ if (!isset($_SESSION['perfil'])) {
             foreach ($arrayItensPedido as $item) {
             ?>
                 <tr>
-                    <td>  <?php echo $item['descricao'] ?> </td>
-                    <td>  <?php echo 'R$ ' . number_format($item['preco'], 2, ',', ''); ?> </td>
+                    <td> <?php echo $item['descricao'] ?> </td>
+                    <td> <?php echo 'R$ ' . number_format($item['preco'], 2, ',', ''); ?> </td>
                     <td> <?php echo (int) $item['quantidade']; ?> </td>
                     <td> <?php echo 'R$ ' . number_format($item['valorTotal'], 2, ',', ''); ?> </td>
                     <td>

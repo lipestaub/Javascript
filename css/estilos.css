@@ -15,10 +15,12 @@ table {
     margin-bottom: 20px;
 }
 
-th, tr {
+th, tr, td {
     text-align: center;
     padding-bottom: 10px;
-    padding-right: 35px;
+    padding-left: 15px;
+    padding-right: 15px;
+
 }
 
 .boasVindas {
