@@ -31,11 +31,12 @@ if (!isset($_SESSION['perfil'])) {
     }
     elseif ($_SESSION['perfil'] == 1) {
     ?>
-        <a href="../index.php">Home</a>
+        <a href="../index.php">Home</a
         <a href="carrinho.php">Meu Carrinho</a>
         <a href="buscaProdutos.php">Buscar Produtos</a>
         <a href="cadastroProdutos.php">Cadastrar Produtos</a>
         <a href="cadastroPessoas.php">Cadastrar Pessoas</a>
+        <a href="controleEstoque.php">Controle de estoque</a>
         <a href="../controle/controleLogout.php">Sair</a>
     <?php
     }
@@ -43,9 +44,6 @@ if (!isset($_SESSION['perfil'])) {
 </menu>
 
 <body>
-    <br>
-    <h3>Meu carrinho</h3>
-
     <?php
 
     include "../conexao/conectar.php";
@@ -58,6 +56,8 @@ if (!isset($_SESSION['perfil'])) {
 
         if (mysqli_num_rows($select) <= 0) {
         ?>
+            <br>
+            <h3>Meu carrinho</h3>
             <span class="mensagem">Nenhum produto encontrado.</span>
         <?php
         }
@@ -71,8 +71,13 @@ if (!isset($_SESSION['perfil'])) {
                 $arrayItensPedido[$i]['preco'] = $dados['preco'];
                 $arrayItensPedido[$i]['quantidade'] = $dados['quantidade'];
                 $arrayItensPedido[$i]['valorTotal'] = $dados['valorTotal'];
+
+                $totalItensCarrinho += (int) $dados['quantidade'];
             }
             ?>
+
+            <br>
+            <h3>Meu carrinho (<?php echo $totalItensCarrinho > 1 ? $totalItensCarrinho . " itens" : $totalItensCarrinho . " item" ?>)</h3>
 
             <table>
             <tr>
@@ -80,7 +85,7 @@ if (!isset($_SESSION['perfil'])) {
                 <th>Pre&ccedil;o</th>
                 <th>Quantidade</th>
                 <th>Total</th>
-                <th></th>
+                <th>Op&ccedil;&otilde;es</th>
             </tr>
 
             <?php
@@ -89,7 +94,7 @@ if (!isset($_SESSION['perfil'])) {
                 <tr>
                     <td>  <?php echo $item['descricao'] ?> </td>
                     <td>  <?php echo 'R$ ' . number_format($item['preco'], 2, ',', ''); ?> </td>
-                    <td> <?php echo $item['quantidade']; ?> </td>
+                    <td> <?php echo (int) $item['quantidade']; ?> </td>
                     <td> <?php echo 'R$ ' . number_format($item['valorTotal'], 2, ',', ''); ?> </td>
                     <td>
                     <?php
@@ -107,9 +112,27 @@ if (!isset($_SESSION['perfil'])) {
             <?php
             }
             ?>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a href='http://localhost/controle/controlePedido.php'>
+                        <input type='button' value='Finalizar pedido'/>
+                    </a>
+                </td>
+            </tr>
             </table>
         <?php       
         }
+    }
+    else {
+        ?>
+        <br>
+        <h3>Meu carrinho</h3>
+        <span class="mensagem">Nenhum produto encontrado.</span>
+        <?php
     }
     ?>
 </body>

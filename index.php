@@ -36,6 +36,7 @@
         <a href="telas/buscaProdutos.php">Buscar Produtos</a>
         <a href="telas/cadastroProdutos.php">Cadastrar Produtos</a>
         <a href="telas/cadastroPessoas.php">Cadastrar Pessoas</a>
+        <a href="telas/controleEstoque.php">Controle de estoque</a>
         <a href="controle/controleLogout.php">Sair</a>
     <?php
     }
@@ -75,7 +76,7 @@ if (isset($_SESSION['nome'])) {
     <tr>
         <th>Descri&ccedil;&atilde;o</th>
         <th>Pre&ccedil;o</th>
-        <th></th>
+        <th>Op&ccedil;&otilde;es</th>
     </tr>
 
     <?php

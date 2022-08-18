@@ -34,6 +34,7 @@ if (!isset($_SESSION['perfil'])) {
         <a href="buscaProdutos.php">Buscar Produtos</a>
         <a href="cadastroProdutos.php">Cadastrar Produtos</a>
         <a href="cadastroPessoas.php">Cadastrar Pessoas</a>
+        <a href="controleEstoque.php">Controle de estoque</a>
         <a href="../controle/controleLogout.php">Sair</a>
     <?php
     }
@@ -60,26 +61,21 @@ if (!isset($_SESSION['perfil'])) {
     ?>
 
     <form action="../controle/editarProduto.php" method="post">
-        Descri&ccedil;&atilde;o:
+        Descri&ccedil;&atilde;o: 
+        <?php echo $descricao ?>
         <br>
-        <input type="text" name="descricao" id="descricao" value="<?php echo $descricao ?>" readonly>
         <br>
-        <br>
-        Pre&ccedil;o:
-        <br>
-        <input type="text" name="preco" id="preco" value="<?php echo $preco ?>" readonly>
+        Pre&ccedil;o: 
+        <?php echo 'R$ ' . number_format($preco, 2, ',', '') ?>
         <br>
         <br>
         Quantidade:
         <br>
-        <input type="text" name="quantidade" id="quantidade" value="<?php echo $quantidade ?>">
+        <input type="number" min="0" max="100" name="quantidade" id="quantidade" value="<?php echo (int) $quantidade ?>">
         <br>
         <br>
-        <input type="hidden" name="idProduto" id="idProduto" value="<?php $idProduto ?>">
-        <input class="button" type="submit" value="Login">
-        <a href="http://localhost/telas/autoCadastroCliente.php">
-            <input type="button" value="Salvar"/>
-        </a>
+        <input type="hidden" name="idProduto" id="idProduto" value="<?php echo $idProduto ?>">
+        <input class="button" type="submit" value="Salvar"/>
     </form>
 </body>
 </html>

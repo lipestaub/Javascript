@@ -36,6 +36,7 @@
         <a href="buscaProdutos.php">Buscar Produtos</a>
         <a href="cadastroProdutos.php">Cadastrar Produtos</a>
         <a href="cadastroPessoas.php">Cadastrar Pessoas</a>
+        <a href="controleEstoque.php">Controle de estoque</a>
         <a href="../controle/controleLogout.php">Sair</a>
     <?php
     }
