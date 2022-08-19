@@ -19,8 +19,8 @@ $documento = $_POST['documento'];
 $idProduto = $_POST['produto'];
 $quantidade = $_POST['quantidade'];
 
-if (empty(str_replace(" ", "", $documento))) {
-    echo "<script>alert('O campo documento deve ser preeenchido!'); window.location.href = '../telas/controleEstoque.php';</script>";
+if (empty(str_replace(" ", "", $documento)) || $idProduto == 0) {
+    echo "<script>alert('Os campos documento e produto devem ser preeenchidos corretamente!'); window.location.href = '../telas/controleEstoque.php';</script>";
 }
 else {
     mysqli_query($conexao, "INSERT INTO movimentacao (data, tipo, documento, idPessoa, idProduto, quantidade) VALUES($data, '$tipo', $documento, $idPessoa, $idProduto, $quantidade)");

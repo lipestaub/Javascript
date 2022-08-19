@@ -40,6 +40,8 @@ if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] == 0) {
         Produto:
         <br>
         <select name="produto" id="produto">
+            <option value="0">Selecione...</option>
+
             <?php
             include "../conexao/conectar.php";
 
