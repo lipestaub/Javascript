@@ -4,7 +4,8 @@ include "../conexao/conectar.php";
 
 $operacao = trim($_POST['operacao']);
 
-if ($operacao == "cadastroCliente") {    
+if ($operacao == "cadastroCliente") {
+
     foreach ($_POST as $key=>$value) {
         if (empty(trim($value))) {
             $camposVazios .= "$key, ";
@@ -76,15 +77,7 @@ if ($operacao == "cadastroCliente") {
 
     }
 }
-elseif ($operacao == "cadastroPessoa") {
-    $perfil = $_POST['perfil'];
-
-    echo $_POST['perfil'];
-
-    unset($_POST['perfil']);
-
-    var_dump($_POST);
-
+elseif ($operacao == "cadastroPessoas") {
     foreach ($_POST as $key=>$value) {
         if (empty(trim($value))) {
             $camposVazios .= "$key, ";
@@ -94,13 +87,13 @@ elseif ($operacao == "cadastroPessoa") {
     $camposVazios = substr($camposVazios, 0, -2);
 
     if ($camposVazios != null && !empty($camposVazios)) {
-    //    echo "<script>alert('Preencha corretamente os campos " . $camposVazios . "!'); window.location.href = '../telas/autoCadastroCliente.php';</script>";
+        echo "<script>alert('Preencha corretamente os campos " . $camposVazios . "!'); window.location.href = '../telas/cadastroPessoas.php';</script>";
     }
     else {
         $camposInvalidos = "";
         $numeroErros = 0;
 
-        $perfil = 0;
+        $perfil = trim($_POST['perfil']) == 2 ? 0 : trim($_POST['perfil']);
         $nome = trim($_POST['nome']);
         $documento = trim($_POST['documento']);
         $telefone = trim($_POST['telefone']);
@@ -128,7 +121,7 @@ elseif ($operacao == "cadastroPessoa") {
         }
 
         if (mysqli_num_rows(mysqli_query($conexao, "SELECT id FROM pessoa WHERE email='$email'")) > 0) {
-            $camposInvalidos .= "\\nO e-mail $email já está cadastrado!";
+            $camposInvalidos .= "\\nO e-mail '$email' já está cadastrado!";
             $numeroErros += 1;
         }
 
@@ -138,7 +131,7 @@ elseif ($operacao == "cadastroPessoa") {
         }
 
         if ($numeroErros > 0) {
-            echo "<script>alert('Foram identificados " . $numeroErros . " erro(s):\\n" . $camposInvalidos . "'); window.location.href = '../telas/autoCadastroCliente.php';</script>";
+            echo "<script>alert('Foram identificados " . $numeroErros . " erro(s):\\n" . $camposInvalidos . "'); window.location.href = '../telas/cadastroPessoas.php';</script>";
         }
         else {
             $query = "INSERT INTO pessoa (nome, documento, telefone, email, senha, perfil) ";
@@ -147,10 +140,10 @@ elseif ($operacao == "cadastroPessoa") {
             $insert = mysqli_query($conexao, $query);
             
             if ($insert) {
-            //    echo "<script>alert('" . $nome . ", seu cadastro foi efetuado com sucesso!'); window.location.href = '../telas/login.php';</script>";
+                echo "<script>alert('O cadastro de " . $nome . " foi efetuado com sucesso!'); window.location.href = '../telas/cadastroPessoas.php';</script>";
             }
             else {
-            //    echo "<script>alert('Algo deu errado!'); window.location.href = '../telas/autoCadastroCliente.php';</script>";
+                echo "<script>alert('Algo deu errado!'); window.location.href = '../telas/cadastroPessoas.php';</script>";
             }
         }
 

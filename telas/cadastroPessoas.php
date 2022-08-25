@@ -59,12 +59,13 @@ if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] == 0) {
         Perfil:
         <br>
         <select name="perfil" id="perfil">
-            <option value="0">Cliente</option>
+            <option value="0">Selecione...</option>
             <option value="1">Funcion&aacute;rio</option>
+            <option value="2">Cliente</option>
         </select>
         <br>
         <br>
-        <input type="hidden" name="operacao" id="operacao" value="cadastroPesssoa">
+        <input type="hidden" name="operacao" id="operacao" value="cadastroPessoas">
         <input class="button" type="submit" value="Cadastrar">
     </form>
 </body>
