@@ -59,7 +59,7 @@ if (isset($_SESSION['nome'])) {
 
     include "conexao/conectar.php";
 
-    $query = "SELECT * FROM produto WHERE estoque > 0";
+    $query = "SELECT * FROM produto";
     $select = mysqli_query($conexao, $query);
 
     while ($dados = mysqli_fetch_assoc($select)) {
