@@ -15,7 +15,7 @@ if ($operacao == "cadastroCliente") {
     $camposVazios = substr($camposVazios, 0, -2);
 
     if ($camposVazios != null && !empty($camposVazios)) {
-        echo "<script>alert('Preencha corretamente os campos " . $camposVazios . "!'); window.location.href = '../telas/autoCadastroCliente.php';</script>";
+        echo "<script>alert('Preencha corretamente o(s) campo(s) " . $camposVazios . "!'); window.location.href = '../telas/autoCadastroCliente.php';</script>";
     }
     else {
         $camposInvalidos = "";
@@ -59,7 +59,7 @@ if ($operacao == "cadastroCliente") {
         }
 
         if ($numeroErros > 0) {
-            echo "<script>alert('Foram identificados " . $numeroErros . " erros:\\n" . $camposInvalidos . "'); window.location.href = '../telas/autoCadastroCliente.php';</script>";
+            echo "<script>alert('Foram identificados " . $numeroErros . " erro(s):\\n" . $camposInvalidos . "'); window.location.href = '../telas/autoCadastroCliente.php';</script>";
         }
         else {
             $query = "INSERT INTO pessoa (nome, documento, telefone, email, senha, perfil) ";
@@ -87,7 +87,7 @@ elseif ($operacao == "cadastroPessoas") {
     $camposVazios = substr($camposVazios, 0, -2);
 
     if ($camposVazios != null && !empty($camposVazios)) {
-        echo "<script>alert('Preencha corretamente os campos " . $camposVazios . "!'); window.location.href = '../telas/cadastroPessoas.php';</script>";
+        echo "<script>alert('Preencha corretamente o(s) campo(s) " . $camposVazios . "!'); window.location.href = '../telas/cadastroPessoas.php';</script>";
     }
     else {
         $camposInvalidos = "";
@@ -131,7 +131,7 @@ elseif ($operacao == "cadastroPessoas") {
         }
 
         if ($numeroErros > 0) {
-            echo "<script>alert('Foram identificados " . $numeroErros . " erros:\\n" . $camposInvalidos . "'); window.location.href = '../telas/cadastroPessoas.php';</script>";
+            echo "<script>alert('Foram identificados " . $numeroErros . " erro(s):\\n" . $camposInvalidos . "'); window.location.href = '../telas/cadastroPessoas.php';</script>";
         }
         else {
             $query = "INSERT INTO pessoa (nome, documento, telefone, email, senha, perfil) ";
@@ -163,7 +163,7 @@ elseif ($operacao == "cadastroProdutos") {
     $camposVazios = substr($camposVazios, 0, -2);
 
     if ($camposVazios != null && !empty($camposVazios)) {
-        echo "<script>alert('Preencha corretamente os campos " . $camposVazios . "!'); window.location.href = '../telas/cadastroProdutos.php';</script>";
+        echo "<script>alert('Preencha corretamente o(s) campo(s) " . $camposVazios . "!'); window.location.href = '../telas/cadastroProdutos.php';</script>";
     }
     else {
         $camposInvalidos = "";
@@ -184,7 +184,7 @@ elseif ($operacao == "cadastroProdutos") {
         }
 
         if ($numeroErros > 0) {
-            echo "<script>alert('Foram identificados " . $numeroErros . " erros:\\n" . $camposInvalidos . "'); window.location.href = '../telas/cadastroProdutos.php';</script>";
+            echo "<script>alert('Foram identificados " . $numeroErros . " erro(s):\\n" . $camposInvalidos . "'); window.location.href = '../telas/cadastroProdutos.php';</script>";
         }
         else {
             $query = "INSERT INTO produto (descricao, preco, estoque) ";
@@ -193,7 +193,7 @@ elseif ($operacao == "cadastroProdutos") {
             $insert = mysqli_query($conexao, $query);
             
             if ($insert) {
-                echo "<script>alert('O produto '" . $nome . "' foi cadastrado com sucesso!'); window.location.href = '../telas/cadastroProdutos.php';</script>";
+                echo "<script>alert('O produto " . $descricao . " foi cadastrado com sucesso!'); window.location.href = '../telas/cadastroProdutos.php';</script>";
             }
             else {
                 echo "<script>alert('Algo deu errado!'); window.location.href = '../telas/cadastroProdutos.php';</script>";
