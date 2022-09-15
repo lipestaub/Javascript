@@ -29,7 +29,25 @@ if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] == 0) {
 
 <body>
     <br>
-    <h3>Cadastrar produtos</h3>
-    
+    <h3>Cadastro pessoas</h3>
+    <form action="../controle/controleCadastro.php" method="post">
+        Descri&ccedil;&atilde;o:
+        <br>
+        <input type="text" name="descricao" id="descricao">
+        <br>
+        <br>
+        Pre&ccedil;o:
+        <br>
+        <input type="text" name="preco" id="preco">
+        <br>
+        <br>
+        Quantidade:
+        <br>
+        <input type="number" min="0" value="0" name="quantidade" id="quantidade">
+        <br>
+        <br>
+        <input type="hidden" name="operacao" id="operacao" value="cadastroProdutos">
+        <input class="button" type="submit" value="Cadastrar">
+    </form>
 </body>
 </html>

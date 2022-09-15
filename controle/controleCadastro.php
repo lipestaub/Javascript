@@ -59,7 +59,7 @@ if ($operacao == "cadastroCliente") {
         }
 
         if ($numeroErros > 0) {
-            echo "<script>alert('Foram identificados " . $numeroErros . " erro(s):\\n" . $camposInvalidos . "'); window.location.href = '../telas/autoCadastroCliente.php';</script>";
+            echo "<script>alert('Foram identificados " . $numeroErros . " erros:\\n" . $camposInvalidos . "'); window.location.href = '../telas/autoCadastroCliente.php';</script>";
         }
         else {
             $query = "INSERT INTO pessoa (nome, documento, telefone, email, senha, perfil) ";
@@ -131,7 +131,7 @@ elseif ($operacao == "cadastroPessoas") {
         }
 
         if ($numeroErros > 0) {
-            echo "<script>alert('Foram identificados " . $numeroErros . " erro(s):\\n" . $camposInvalidos . "'); window.location.href = '../telas/cadastroPessoas.php';</script>";
+            echo "<script>alert('Foram identificados " . $numeroErros . " erros:\\n" . $camposInvalidos . "'); window.location.href = '../telas/cadastroPessoas.php';</script>";
         }
         else {
             $query = "INSERT INTO pessoa (nome, documento, telefone, email, senha, perfil) ";
@@ -147,5 +147,57 @@ elseif ($operacao == "cadastroPessoas") {
             }
         }
 
+    }
+}
+elseif ($operacao == "cadastroProdutos") {
+    foreach ($_POST as $key=>$value) {
+        if ((strlen(trim($value))) == 0) {
+            if ($key == "preco") {
+
+            }
+
+            $camposVazios .= "$key, ";
+        }
+    }
+
+    $camposVazios = substr($camposVazios, 0, -2);
+
+    if ($camposVazios != null && !empty($camposVazios)) {
+        echo "<script>alert('Preencha corretamente os campos " . $camposVazios . "!'); window.location.href = '../telas/cadastroProdutos.php';</script>";
+    }
+    else {
+        $camposInvalidos = "";
+        $numeroErros = 0;
+
+        $descricao = trim($_POST['descricao']);
+        $preco = (float) number_format((float) str_replace(" ", "", $_POST['preco']), 4, ".", "");
+        $quantidade = (float) number_format((float) trim($_POST['quantidade']), 3, ".", "");
+
+        if (strlen($descricao) < 2) {
+            $camposInvalidos .= "\\nA descrição deve ter no mínimo 2 caracteres!";
+            $numeroErros += 1;
+        }
+
+        if ($preco <= 0) {
+            $camposInvalidos .= "\\nO preco deve ser maior que R$ 0,00!";
+            $numeroErros += 1;
+        }
+
+        if ($numeroErros > 0) {
+            echo "<script>alert('Foram identificados " . $numeroErros . " erros:\\n" . $camposInvalidos . "'); window.location.href = '../telas/cadastroProdutos.php';</script>";
+        }
+        else {
+            $query = "INSERT INTO produto (descricao, preco, estoque) ";
+            $query .= "VALUES ('$descricao', $preco, $quantidade)";
+
+            $insert = mysqli_query($conexao, $query);
+            
+            if ($insert) {
+                echo "<script>alert('O produto '" . $nome . "' foi cadastrado com sucesso!'); window.location.href = '../telas/cadastroProdutos.php';</script>";
+            }
+            else {
+                echo "<script>alert('Algo deu errado!'); window.location.href = '../telas/cadastroProdutos.php';</script>";
+            }
+        }
     }
 }
