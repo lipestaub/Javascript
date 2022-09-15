@@ -7,7 +7,7 @@ $operacao = trim($_POST['operacao']);
 if ($operacao == "cadastroCliente") {
 
     foreach ($_POST as $key=>$value) {
-        if (empty(trim($value))) {
+        if ((strlen(trim($value))) == 0) {
             $camposVazios .= "$key, ";
         }
     }
@@ -15,7 +15,7 @@ if ($operacao == "cadastroCliente") {
     $camposVazios = substr($camposVazios, 0, -2);
 
     if ($camposVazios != null && !empty($camposVazios)) {
-        echo "<script>alert('Preencha corretamente o(s) campo(s) " . $camposVazios . "!'); window.location.href = '../telas/autoCadastroCliente.php';</script>";
+        echo "<script>alert('Preencha corretamente o(s) campo(s): " . $camposVazios . "!'); window.location.href = '../telas/autoCadastroCliente.php';</script>";
     }
     else {
         $camposInvalidos = "";
@@ -79,7 +79,7 @@ if ($operacao == "cadastroCliente") {
 }
 elseif ($operacao == "cadastroPessoas") {
     foreach ($_POST as $key=>$value) {
-        if (empty(trim($value))) {
+        if ((strlen(trim($value))) == 0) {
             $camposVazios .= "$key, ";
         }
     }
@@ -87,7 +87,7 @@ elseif ($operacao == "cadastroPessoas") {
     $camposVazios = substr($camposVazios, 0, -2);
 
     if ($camposVazios != null && !empty($camposVazios)) {
-        echo "<script>alert('Preencha corretamente o(s) campo(s) " . $camposVazios . "!'); window.location.href = '../telas/cadastroPessoas.php';</script>";
+        echo "<script>alert('Preencha corretamente o(s) campo(s): " . $camposVazios . "!'); window.location.href = '../telas/cadastroPessoas.php';</script>";
     }
     else {
         $camposInvalidos = "";
@@ -152,10 +152,6 @@ elseif ($operacao == "cadastroPessoas") {
 elseif ($operacao == "cadastroProdutos") {
     foreach ($_POST as $key=>$value) {
         if ((strlen(trim($value))) == 0) {
-            if ($key == "preco") {
-
-            }
-
             $camposVazios .= "$key, ";
         }
     }
@@ -163,7 +159,7 @@ elseif ($operacao == "cadastroProdutos") {
     $camposVazios = substr($camposVazios, 0, -2);
 
     if ($camposVazios != null && !empty($camposVazios)) {
-        echo "<script>alert('Preencha corretamente o(s) campo(s) " . $camposVazios . "!'); window.location.href = '../telas/cadastroProdutos.php';</script>";
+        echo "<script>alert('Preencha corretamente o(s) campo(s): " . $camposVazios . "!'); window.location.href = '../telas/cadastroProdutos.php';</script>";
     }
     else {
         $camposInvalidos = "";
