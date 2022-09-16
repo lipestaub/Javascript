@@ -29,7 +29,7 @@ if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] == 0) {
 
 <body>
     <br>
-    <h3>Cadastro pessoas</h3>
+    <h3>Cadastro produtos</h3>
     <form action="../controle/controleCadastro.php" method="post">
         Descri&ccedil;&atilde;o:
         <br>
