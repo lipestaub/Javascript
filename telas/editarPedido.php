@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/estilos.css">
-    <link rel="icon" href="../recursos/carrinho.ico">
+    <link rel="icon" href="../imagens/carrinho.ico">
     <title>Azamon</title>
 </head>
 
@@ -60,7 +60,7 @@ if (!isset($_SESSION['perfil'])) {
     }
     ?>
 
-    <form action="../controle/editarProduto.php" method="post">
+    <form action="../controle/editarPedido.php" method="post">
         Descri&ccedil;&atilde;o: 
         <?php echo $descricao ?>
         <br>
