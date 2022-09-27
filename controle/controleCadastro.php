@@ -197,3 +197,9 @@ elseif ($operacao == "cadastroProdutos") {
         }
     }
 }
+elseif ($operacao == "cadastroImagem") {
+    var_dump($_POST);
+    echo "<br>";
+    echo "<br>";
+    var_dump($_FILES);
+}
