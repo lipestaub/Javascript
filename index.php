@@ -69,11 +69,13 @@ if (isset($_SESSION['nome'])) {
         $arrayProdutos[$i]['descricao'] = $dados['descricao'];
         $arrayProdutos[$i]['preco'] = $dados['preco'];
         $arrayProdutos[$i]['estoque'] = $dados['estoque'];
+        $arrayProdutos[$i]['caminhoImagem'] = $dados['caminhoImagem'];
     }
     ?>
 
     <table>
     <tr>
+        <th></th>
         <th>Descri&ccedil;&atilde;o</th>
         <th>Pre&ccedil;o</th>
         <th>Op&ccedil;&otilde;es</th>
@@ -83,6 +85,19 @@ if (isset($_SESSION['nome'])) {
     foreach ($arrayProdutos as $produto) {
     ?>
         <tr>
+            <td>
+                <?php
+                if ($produto['caminhoImagem'] == null) {
+                ?>
+                    <img src="imagens/defaultImage.jpg">
+                <?php
+                }
+                else {
+                ?>
+                <?php
+                }
+                ?>
+            </td>
             <td> <?php echo $produto['descricao']; ?> </td>
             <td> <?php echo 'R$ ' . number_format($produto['preco'], 2, ',', ''); ?> </td>
             <td>
