@@ -50,11 +50,11 @@ if (!isset($_SESSION['perfil'])) {
     while ($dados = mysqli_fetch_array($resposta)) {
         $descricao = $dados[1];
         $preco = $dados[2];
-        $quantidade = $dados[3];
+        $estoque = $dados[3];
     }
     ?>
 
-    <form action="../controle/editarPedido.php" method="post">
+    <form action="../controle/editarProduto.php" method="post">
         Descri&ccedil;&atilde;o: 
         <input type="text" name="descricao" id="descricao" value="<?php echo $descricao ?>">
         <br>
@@ -64,7 +64,7 @@ if (!isset($_SESSION['perfil'])) {
         <br>
         <br>
         Estoque:
-        <input type="number" name="estoque" id="estoque" value="<?php echo (int) $quantidade ?>">
+        <input type="number" name="estoque" id="estoque" value="<?php echo (int) $estoque ?>">
         <br>
         <br>
         <input type="hidden" name="idProduto" id="idProduto" value="<?php echo $idProduto ?>">
