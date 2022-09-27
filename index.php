@@ -92,6 +92,15 @@ if (isset($_SESSION['nome'])) {
                 echo "<a href='http://localhost/controle/controleCompra.php?p=$id'>";
                     echo "<input type='button' value='Comprar'/>";
                 echo "</a>";
+
+                if ($_SESSION['perfil'] == 1) {
+                    echo "<a href='http://localhost/telas/editarProduto.php?p=$id'>";
+                        echo "<input type='button' value='Editar produto'/>";
+                    echo "</a>";
+                    echo "<a href='http://localhost/telas/cadastrarImagem.php?p=$id'>";
+                        echo "<input type='button' value='Cadastrar imagem'/>";
+                    echo "</a>";
+                }
             ?>
             </td>
         </tr>

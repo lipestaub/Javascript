@@ -100,7 +100,7 @@ if (!isset($_SESSION['perfil'])) {
                     <?php
                         $id = $item['idProduto'];
 
-                        echo "<a href='http://localhost/telas/editarProduto.php?p=$id'>";
+                        echo "<a href='http://localhost/telas/editarPedido.php?p=$id'>";
                             echo "<input type='button' value='Editar'/>";
                         echo "</a>";
                         echo "<a href='http://localhost/controle/excluirProduto.php?p=$id'>";
