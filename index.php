@@ -87,7 +87,7 @@ if (isset($_SESSION['nome'])) {
         <tr>
             <td>
                 <?php
-                if ($produto['caminhoImagem'] == null) {
+                if ($produto['caminhoImagem'] == "") {
                 ?>
                     <img src="imagens/defaultImage.jpg">
                 <?php

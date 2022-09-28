@@ -51,7 +51,7 @@ if (!isset($_SESSION['perfil'])) {
     if (isset($_SESSION['idPedido'])) { 
         $idPedido = $_SESSION['idPedido'];
 
-        $query = "SELECT PE.id AS idPedido, P.id AS idProduto, P.descricao AS descricao, P.preco AS preco, IP.quantidade AS quantidade, (preco * quantidade) AS valorTotal FROM produto P INNER JOIN itemPedido IP ON P.id = IP.idProduto INNER JOIN pedido PE ON PE.id = IP.idPedido WHERE PE.idPedido = $idPedido";
+        $query = "SELECT PE.id AS idPedido, P.id AS idProduto, P.descricao AS descricao, P.preco AS preco, IP.quantidade AS quantidade, (preco * quantidade) AS valorTotal, P.caminhoImagem AS caminhoImagem FROM produto P INNER JOIN itemPedido IP ON P.id = IP.idProduto INNER JOIN pedido PE ON PE.id = IP.idPedido WHERE PE.idPedido = $idPedido";
         $select = mysqli_query($conexao, $query);
 
         if (mysqli_num_rows($select) <= 0) {
@@ -71,6 +71,7 @@ if (!isset($_SESSION['perfil'])) {
                 $arrayItensPedido[$i]['preco'] = $dados['preco'];
                 $arrayItensPedido[$i]['quantidade'] = $dados['quantidade'];
                 $arrayItensPedido[$i]['valorTotal'] = $dados['valorTotal'];
+                $arrayItensPedido[$i]['caminhoImagem'] = $dados['caminhoImagem'];
 
                 $totalItensCarrinho += (int) $dados['quantidade'];
             }
@@ -81,6 +82,7 @@ if (!isset($_SESSION['perfil'])) {
 
             <table>
             <tr>
+                <th></th>
                 <th>Descri&ccedil;&atilde;o</th>
                 <th>Pre&ccedil;o</th>
                 <th>Quantidade</th>
@@ -92,6 +94,20 @@ if (!isset($_SESSION['perfil'])) {
             foreach ($arrayItensPedido as $item) {
             ?>
                 <tr>
+                    <td>
+                        <?php
+                        if ($item['caminhoImagem'] == "") {
+                        ?>
+                            <img src="../imagens/defaultImage.jpg">
+                        <?php
+                        }
+                        else {
+                        ?>
+                            <img src="<?php echo $item['caminhoImagem']; ?>">
+                        <?php
+                        }
+                        ?>
+                    </td>
                     <td> <?php echo $item['descricao'] ?> </td>
                     <td> <?php echo 'R$ ' . number_format($item['preco'], 2, ',', ''); ?> </td>
                     <td> <?php echo (int) $item['quantidade']; ?> </td>
