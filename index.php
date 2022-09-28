@@ -94,6 +94,7 @@ if (isset($_SESSION['nome'])) {
                 }
                 else {
                 ?>
+                    <img src="<?php echo substr($produto['caminhoImagem'], 1) ?>">
                 <?php
                 }
                 ?>
