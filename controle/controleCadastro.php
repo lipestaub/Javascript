@@ -183,8 +183,30 @@ elseif ($operacao == "cadastroProdutos") {
             echo "<script>alert('Foram identificados " . $numeroErros . " erro(s):\\n" . $camposInvalidos . "'); window.location.href = '../telas/cadastroProdutos.php';</script>";
         }
         else {
-            $query = "INSERT INTO produto (descricao, preco, estoque) ";
-            $query .= "VALUES ('$descricao', $preco, $quantidade)";
+            if (empty($_FILES['imagem']['full_path'])) {
+                $caminhoImagem = "";
+            }
+            else {
+                $idProduto = mysqli_fetch_row(mysqli_query($conexao, "SELECT MAX(id) FROM produto"))[0] + 1;
+                $caminho = "../imagens/produtos/" . $idProduto . "/";
+                $caminho_tmp = $_FILES['imagem']['tmp_name'];
+
+                $imgExtension = explode(".", $_FILES['imagem']['name'])[1];
+                $nome_arquivo = "img" . 1 . "." . $imgExtension;
+
+                $caminhoImagem = $caminho . $nome_arquivo;
+
+                if (!is_dir($caminho)) {
+                    mkdir($caminho, 0777);
+                }
+        
+                if (!move_uploaded_file($caminho_tmp, $caminhoImagem)) {
+                    echo "<script>alert('Erro ao fazer upload!');</script>";
+                }
+            }
+
+            $query = "INSERT INTO produto (descricao, preco, estoque, caminhoImagem) ";
+            $query .= "VALUES ('$descricao', $preco, $quantidade, '$caminhoImagem')";
 
             $insert = mysqli_query($conexao, $query);
             
