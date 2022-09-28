@@ -54,7 +54,7 @@ if (!isset($_SESSION['perfil'])) {
     }
     ?>
 
-    <form action="../controle/editarProduto.php" method="post">
+    <form action="../controle/editarProduto.php" method="post" enctype="multipart/form-data">
         Descri&ccedil;&atilde;o: 
         <input type="text" name="descricao" id="descricao" value="<?php echo $descricao ?>">
         <br>
@@ -65,6 +65,10 @@ if (!isset($_SESSION['perfil'])) {
         <br>
         Estoque:
         <input type="number" name="estoque" id="estoque" value="<?php echo (int) $estoque ?>">
+        <br>
+        <br>
+        Imagem:
+        <input type="file" id="imagem" name="imagem" accept="image/png, image/jpeg">
         <br>
         <br>
         <input type="hidden" name="idProduto" id="idProduto" value="<?php echo $idProduto ?>">

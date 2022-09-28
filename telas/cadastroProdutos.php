@@ -30,7 +30,7 @@ if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] == 0) {
 <body>
     <br>
     <h3>Cadastro produtos</h3>
-    <form action="../controle/controleCadastro.php" method="post">
+    <form action="../controle/controleCadastro.php" method="post" enctype="multipart/form-data">
         Descri&ccedil;&atilde;o:
         <br>
         <input type="text" name="descricao" id="descricao">
@@ -44,6 +44,10 @@ if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] == 0) {
         Quantidade:
         <br>
         <input type="number" min="0" value="0" name="quantidade" id="quantidade">
+        <br>
+        <br>
+        Imagem:
+        <input type="file" id="imagem" name="imagem" accept="image/png, image/jpeg">
         <br>
         <br>
         <input type="hidden" name="operacao" id="operacao" value="cadastroProdutos">
