@@ -92,6 +92,8 @@ if (!isset($_SESSION['perfil'])) {
 
             <?php
             foreach ($arrayItensPedido as $item) {
+
+                $valorTotal += (double) $item['preco'] * (double) $item['quantidade'];
             ?>
                 <tr>
                     <td>
@@ -128,11 +130,18 @@ if (!isset($_SESSION['perfil'])) {
             <?php
             }
             ?>
+ 
+            </table>
+            <br>
+            <hr>
+            <br>
+            <table>
+            <th>Quantidade de itens</th>
+            <th>Valor Total</th>
+            <th></th>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><?php echo $totalItensCarrinho; ?></td>
+                <td><?php echo 'R$ ' . number_format($valorTotal, 2, ',', ''); ?></td>
                 <td>
                     <a href='http://localhost/controle/controlePedido.php'>
                         <input type='button' value='Finalizar pedido'/>
